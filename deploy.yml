@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: task101p-deployment
+  labels:
+    type: backend
+    app: task101p
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      type: backend
+      app: task101p
+  template:
+    metadata:
+      name: task101p-pod
+      labels:
+        type: backend
+        app: task101p
+    spec:
+      containers:
+        - name: task101p-container
+          image: australia-southeast2-docker.pkg.dev/extreme-braid-420302/sit323/task101p:latest
+          ports:
+            - containerPort: 3000
+
+
